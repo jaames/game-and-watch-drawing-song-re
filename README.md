@@ -1,4 +1,4 @@
-# Game and Watch hacking
+Poking around reverse-engineering the hidden "Mario Drawing Song" from the Game & Watch: Super Mario Bros console, to see how closely it matches the original Flipnote version.
 
-This repository contains a couple of scripts for working with the Nintendo Game and Watch Super Mario Bros.,  check out
-this video for details: https://www.youtube.com/watch?v=Rsi8p5gbaps
+Additions: 
+- **viewframebuffer.py** - Extracts the framebuffer from a given ram dump, tweaked from viewmem.py to use the correct color format, image dimensions and offset
