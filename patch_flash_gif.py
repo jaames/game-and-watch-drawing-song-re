@@ -11,12 +11,12 @@ def read_image_block(gif):
 
 with open(argv[1], 'rb') as flash, open(argv[2], 'wb') as out_gif:
   flash.seek(0x12D44)
-  out_gif.write(flash.read(25))
+  header = bytearray(flash.read(25))
   min_size = flash.read(1)
-  out_gif.write(bytes([
-    # netscape ext
-    0x21, 0xFF, 0x0B, 0x4E, 0x45, 0x54, 0x53, 0x43, 0x41, 0x50, 0x45, 0x32, 0x2E, 0x30, 0x03, 0x01, 0x00, 0x00, 0x00
-  ]))
+  # patch header
+  header[10] = 0xF1
+  header[11] = 0x02
+  out_gif.write(header)
   i = 0
   while True:
     block = read_image_block(flash)
